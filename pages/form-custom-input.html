@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemple formulaire</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      max-width: 10rem;
+      margin-inline: auto;
+    }
+
+    input {
+      color: red;
+    }
+  </style>
+  <script type="module">
+    import '../src/components/my-custom-input.js';
+  </script>
+</head>
+<body>
+  <form name="identity"> 
+    <input is="my-custom-input" label="name" name="name" />
+    <input is="my-custom-input" label="email" name="email" />
+    <button>Envoyer</button>
+  </form>
+  <script>
+    const formEl = document.forms.identity;
+    
+    formEl.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const data = Object.fromEntries(new FormData(formEl));
+      console.log('Submitted', data);
+    });
+  </script>
+</body>
+</html>

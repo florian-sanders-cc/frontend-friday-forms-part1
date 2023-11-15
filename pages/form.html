@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemple formulaire</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      max-width: 10rem;
+      margin-inline: auto;
+    }
+  </style>
+</head>
+<body>
+  <form name="identity">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="text" name="email">
+    </div>
+    <button>Envoyer</button>
+  </form>
+  <script>
+    const formEl = document.forms.identity;
+    
+    formEl.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = Object.fromEntries(new FormData(formEl));
+      console.log('Submitted', data);
+    });
+  </script>
+</body>
+</html>
